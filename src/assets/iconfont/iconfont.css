@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2789021 */
+  src: url('iconfont.woff2?t=1632038016074') format('woff2'),
+       url('iconfont.woff?t=1632038016074') format('woff'),
+       url('iconfont.ttf?t=1632038016074') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-preset_32_all_sel:before {
+  content: "\e678";
+}
+
+.icon-preset_32_down:before {
+  content: "\e679";
+}
+
+.icon-left_white_32:before {
+  content: "\e677";
+}
+
+.icon-preset_32:before {
+  content: "\e676";
+}
+
+.icon-calendar:before {
+  content: "\e675";
+}
+
+.icon-Left_72:before {
+  content: "\e673";
+}
+
+.icon-right_72:before {
+  content: "\e674";
+}
+
+.icon-location_blue_14:before {
+  content: "\e672";
+}
+
+.icon-close_22_white:before {
+  content: "\e671";
+}
+
+.icon-location_cu:before {
+  content: "\e670";
+}
+
+.icon-type:before {
+  content: "\e66e";
+}
+
+.icon-type_shop:before {
+  content: "\e66f";
+}
+
+.icon-kooboo_black_30:before {
+  content: "\e66d";
+}
+
+.icon-play:before {
+  content: "\e66c";
+}
+
+.icon-stars:before {
+  content: "\e668";
+}
+
+.icon-close:before {
+  content: "\e662";
+}
+
+.icon-page_left:before {
+  content: "\e663";
+}
+
+.icon-location:before {
+  content: "\e664";
+}
+
+.icon-page_right:before {
+  content: "\e665";
+}
+
+.icon-right_arrow:before {
+  content: "\e666";
+}
+
+.icon-search:before {
+  content: "\e667";
+}
+
+.icon-wind:before {
+  content: "\e669";
+}
+
+.icon-water:before {
+  content: "\e66a";
+}
+
+.icon-surf:before {
+  content: "\e66b";
+}
+

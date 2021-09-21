@@ -1,0 +1,177 @@
+{
+  "id": "2789021",
+  "name": "template专用",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "24444872",
+      "name": "preset_32_all_sel",
+      "font_class": "preset_32_all_sel",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "24444873",
+      "name": "preset_32_down",
+      "font_class": "preset_32_down",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "24325809",
+      "name": "left_white_32",
+      "font_class": "left_white_32",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "24324243",
+      "name": "preset_32",
+      "font_class": "preset_32",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "24324222",
+      "name": "calendar",
+      "font_class": "calendar",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "24306230",
+      "name": "Left_72",
+      "font_class": "Left_72",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "24306231",
+      "name": "right_72",
+      "font_class": "right_72",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "24262292",
+      "name": "location_14",
+      "font_class": "location_blue_14",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "24212006",
+      "name": "close_22_white",
+      "font_class": "close_22_white",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "24211976",
+      "name": "location_cu",
+      "font_class": "location_cu",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "24183014",
+      "name": "type",
+      "font_class": "type",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "24183015",
+      "name": "type_shop",
+      "font_class": "type_shop",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "24168752",
+      "name": "kooboo_black_30",
+      "font_class": "kooboo_black_30",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "24101456",
+      "name": "play",
+      "font_class": "play",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "24101436",
+      "name": "stars",
+      "font_class": "stars",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "24101386",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "24101387",
+      "name": "page_left",
+      "font_class": "page_left",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "24101388",
+      "name": "location",
+      "font_class": "location",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "24101389",
+      "name": "page_right",
+      "font_class": "page_right",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "24101390",
+      "name": "right_arrow",
+      "font_class": "right_arrow",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "24101391",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "24101393",
+      "name": "wind",
+      "font_class": "wind",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "24101394",
+      "name": "water",
+      "font_class": "water",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "24101395",
+      "name": "surf",
+      "font_class": "surf",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    }
+  ]
+}

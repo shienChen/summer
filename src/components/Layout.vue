@@ -1,15 +1,22 @@
 <template>
   <div class="summer-layout">
-    <header>head</header>
+    <homepageHeader />
     <main>
       <router-view />
     </main>
-    <footer>foot</footer>
+    <homepageFooter />
   </div>
 </template>
 
 <script>
+import homepageHeader from "./Header.vue";
+import homepageFooter from "./Footer.vue";
+
 export default {
   name: "Layout",
+  components: {
+    homepageHeader,
+    homepageFooter,
+  },
 };
 </script>

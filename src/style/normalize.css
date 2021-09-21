@@ -13,6 +13,9 @@
   line-height: 1.15; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  font-size:20px;
+	font-weight: 600;
+	font-family: PingFangSC, PingFangSC-Regular;
 }
 
 /* Sections
@@ -444,4 +447,150 @@ template {
 
 [hidden] {
   display: none;
+}
+.clear{clear:both;}
+ul li{list-style: none;}
+a{text-decoration: none;}
+
+ul,p,h3{
+  margin: 0;
+}
+
+.icon {
+	width: 2.5rem;
+    height: 2.5rem;
+	vertical-align: -0.075rem;
+	fill: currentColor;
+	overflow: hidden;
+}
+.flex{
+	display: flex;
+}
+.com_content{max-width: 64rem;margin: 0 auto;}
+.com_title{display: flex; justify-content: space-between; align-items: flex-end;}
+
+.ellipsis {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;display: block;}
+  
+
+.common_banners img{width: 100%;}
+
+.content{max-width:64rem;margin: 0 auto;}
+.wrapper{display: flex;flex-wrap: wrap;}
+
+h3.title{
+	font-size: 56px;
+	font-family: PingFangSC, PingFangSC-Regular;
+	font-weight: 400; 
+	color: #c0ffec;
+	line-height: 78px;
+	letter-spacing: 5px;
+	margin-bottom: 24px;
+}
+ 
+h3.v_title{
+	font-size: 32px;
+	font-family: PingFangSC, PingFangSC-Medium;
+	font-weight: 500;
+	text-align: center;
+	color: #192845;
+}
+
+
+.commonTitle { 
+	position: relative;
+	margin-bottom: 56px; 
+}
+
+.commonTitle img{
+	position: absolute;
+    top: 4px;
+}
+
+.commonTitle p{
+	text-align: center;
+	font-size: 24px;
+	font-family: PingFangSC, PingFangSC-Regular;
+	font-weight: 400; 
+	color: #515161;
+	line-height: 33px;
+	margin-top: 16px;
+	padding-bottom: 24px;
+  /* border-bottom: rgb(25 40 69 / 30%) 1px solid; */
+}
+
+.commonText span{
+	font-size: 1.2rem;
+	font-family: PingFangSC, PingFangSC-Semibold; 
+	text-align: right;
+	color: #c6c9d4;
+	line-height: 1.6rem;
+	letter-spacing: 0.4rem;
+	position: relative;
+}
+.commonText span::after{
+	content: '';
+	position: absolute;
+	width: 4.8rem;
+	height: 0.05rem;
+	background-color:#d8d8d8;
+	bottom: 0.7rem;
+	left: -5.6rem;
+}
+.commonText p{
+	font-size: 1.6rem;
+	font-family: PingFangSC, PingFangSC-Semibold; 
+	text-align: right;
+	color: #ffffff;
+	line-height: 2.25rem;
+	letter-spacing: 0.65rem;
+}
+
+.el-form-item__label {
+  text-align: left;
+  width: auto !important;
+  font-size: 16px;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  color: #192845;
+}
+
+.el-form-item__content{
+  margin-left: 0 !important;
+}
+
+.el-textarea__inner{
+  min-height: 180px !important;
+}
+
+.el-button{ 
+  font-size: 14px;
+  font-family: PingFangSC, PingFangSC-Semibold;
+  font-weight: 600;
+  color: #192845;
+}
+ 
+
+
+.commonTitle { 
+	position: relative;
+	margin-bottom: 56px; 
+}
+
+.commonTitle img{
+	position: absolute;
+  top: 4px;
+  left: 0;
+  cursor: pointer;
+}
+
+.commonTitle p{
+	text-align: center;
+	font-size: 24px;
+	font-family: PingFangSC, PingFangSC-Regular;
+	font-weight: 400; 
+	color: #515161;
+	line-height: 33px;
+	margin-top: 16px;
+	padding-bottom: 24px;
+  /* border-bottom: rgb(25 40 69 / 30%) 1px solid; */
 }

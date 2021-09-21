@@ -1,10 +1,11 @@
 import Vue from "vue";
 import "./plugins/axios";
-import "@/style/index.scss";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./plugins/element.js";
+import "@/style/index.scss";
+import "./assets/iconfont/iconfont.js";
 
 Vue.config.productionTip = false;
 
