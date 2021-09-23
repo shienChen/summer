@@ -1,56 +1,40 @@
 <template>
   <div class="picture-wrapper">
-    <div class="picture-item">
-      <img src="@/assets/images/surf02.png" alt="" />
+    <div class="picture-item" v-for="item in surfList" :key="item.id">
+      <img :src="item.img" alt="" />
       <div class="mask"></div>
       <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
-      </div>
-    </div>
-    <div class="picture-item">
-      <div>
-        <img src="@/assets/images/surf02.png" alt="" />
-      </div>
-      <div class="mask"></div>
-      <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
-      </div>
-    </div>
-    <div class="picture-item">
-      <div>
-        <img src="@/assets/images/surf02.png" alt="" />
-      </div>
-      <div class="mask"></div>
-      <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
-      </div>
-    </div>
-    <div class="picture-item">
-      <div>
-        <img src="@/assets/images/surf02.png" alt="" />
-      </div>
-      <div class="mask"></div>
-      <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.subhead }}</p>
+        <a @click="jump(item.userKey)"
+          ><span id="view">{{ item.view }}</span></a
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "view",
+  data() {
+    return {
+      surfList: [],
+    };
+  },
+  created() {
+    this.getArticleList();
+    console.log(this.$router);
+  },
   methods: {
-    jump(val) {
-      this.$router.push(val);
+    jump(id) {
+      this.$router.push({ path: "/view/" + id });
+    },
+    async getArticleList() {
+      const { data: res } = await axios.get("/api/surf/list");
+      console.log(res);
+      this.surfList = res.data.list;
     },
   },
 };
@@ -63,6 +47,7 @@ export default {
   .picture-item {
     width: 25%;
     position: relative;
+    height: 740px;
 
     img {
       width: 100%;
@@ -146,7 +131,11 @@ export default {
         transition: all 0.55s ease;
       }
     }
-
+    &:nth-child(1) {
+      .mask_txt h3 {
+        width: 7rem;
+      }
+    }
     &:nth-child(2) {
       .mask_txt h3 {
         width: 7rem;

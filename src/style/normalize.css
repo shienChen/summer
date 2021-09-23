@@ -552,6 +552,16 @@ h3.v_title{
   font-family: PingFangSC, PingFangSC-Medium;
   font-weight: 500;
   color: #192845;
+  float: none;
+}
+.el-input--suffix .el-input__inner { 
+  width: 286px;
+  border: 1px solid #a7b0be;
+  border-radius: 4px;
+}
+.el-input__inner{
+  border: 1px solid #a7b0be;
+  border-radius: 4px;
 }
 
 .el-form-item__content{
@@ -593,4 +603,67 @@ h3.v_title{
 	margin-top: 16px;
 	padding-bottom: 24px;
   /* border-bottom: rgb(25 40 69 / 30%) 1px solid; */
+}
+
+.book {
+  background-image: url(../assets/images/i_banner.png);
+  background-repeat: no-repeat;
+  background-size: 200%;
+  background-position: center;
+  min-height: 45.5rem;
+  position: relative;
+  
+  }
+  .book .content {
+    background: #f5f8f7;
+    border-radius: 8px;
+    padding: 56px 24px;
+
+     
+  }
+
+  .book .container {
+  max-width: 47.75rem;
+  margin: 0 auto;
+  padding-top: 5.8rem;
+  padding-bottom: 2.8rem;
+  opacity: 1;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+}
+
+#error,#success{
+	display: none;
+	font-size: 16px;
+	font-family: PingFangSC, PingFangSC-Medium;
+	font-weight: 500;
+	text-align: left;
+	color: #192845;
+	line-height: 22px;
+	margin-bottom: 24px;
+}
+
+#select{
+	display: block;
+    width: 45%;
+    padding: 10px 16px;
+    margin-top: 8px;
+    border: 1px solid #192845;
+    border-radius: 4px;
+    outline: none;
+}
+
+small.help-block {
+    display: block;
+    margin-top: 10px;
+    color: #d45656;
+	text-align: left;
+}
+
+#join small.help-block{
+	text-align: center; 
 }

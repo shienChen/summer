@@ -32,11 +32,16 @@
         style="height: 180px"
       ></el-input>
     </el-form-item>
-    <el-button type="submit" class="btn btn-block">Subscribe</el-button>
+    <div id="success">You have placed your order successfully.!</div>
+    <div id="error">Order failed, please try later.</div>
+    <el-button type="submit" class="btn btn-block" @click="addUser"
+      >Subscribe</el-button
+    >
   </el-form>
 </template>
 
 <script>
+import $ from "jquery";
 export default {
   data() {
     //验证邮箱规则
@@ -89,7 +94,30 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    addUser() {
+      this.$refs.FormRef.validate(async (valid) => {
+        console.log(valid);
+        if (!valid) return;
+        var data = JSON.stringify(this.ruleForm);
+        $.ajax({
+          url: "/user",
+          type: "POST",
+          data: data,
+          cache: false,
+          success: function () {
+            $("#success").show();
+            $("#bookDetailsForm").trigger("reset");
+            // api请求成功的回调 （页面跳转）
+            // window.location.href("~")
+          },
+          error: function () {
+            $("#error").show();
+          },
+        });
+      });
+    },
+  },
 };
 </script>
 
@@ -101,6 +129,7 @@ export default {
   border-radius: 8px;
   padding: 32px 24px;
   margin-bottom: 100px;
+  text-align: left;
   input {
     border: 1px solid #a7b0be;
     border-radius: 4px;

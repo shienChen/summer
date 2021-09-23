@@ -5,8 +5,9 @@ import HomePage from "@/views/Home.vue";
 import AboutUs from "@/views/About.vue";
 import NewsCenter from "@/views/News.vue";
 import ContactUs from "@/views/Contact.vue";
-import ViewList from "@/views/View.vue";
+import ViewList from "@/views/ViewPage.vue";
 import Book from "@/views/Book.vue";
+import BookDetails from "@/views/BookDetails.vue";
 
 Vue.use(VueRouter);
 
@@ -38,14 +39,19 @@ const routes = [
         component: ContactUs,
       },
       {
-        path: "/view",
-        name: "view",
+        path: "/view/:id",
+        name: "ViewPage",
         component: ViewList,
       },
       {
-        path: "/book",
+        path: "/book/:id",
         name: "Book",
         component: Book,
+      },
+      {
+        path: "/bookDetails",
+        name: "BookDetails",
+        component: BookDetails,
       },
     ],
   },

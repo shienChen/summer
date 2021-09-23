@@ -35,7 +35,6 @@
 
 <script>
 export default {
-  name: "Header",
   methods: {
     jump(val) {
       this.$router.push(val);
