@@ -1,22 +1,22 @@
 <template>
   <div class="summer-layout">
-    <homepageHeader />
+    <page-header />
     <main>
       <router-view />
     </main>
-    <homepageFooter />
+    <page-footer />
   </div>
 </template>
 
 <script>
-import homepageHeader from "./Header.vue";
-import homepageFooter from "./Footer.vue";
+import PageHeader from "./PageHeader.vue";
+import PageFooter from "./PageFooter.vue";
 
 export default {
   name: "Layout",
   components: {
-    homepageHeader,
-    homepageFooter,
+    PageHeader,
+    PageFooter,
   },
 };
 </script>

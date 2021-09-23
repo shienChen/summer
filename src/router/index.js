@@ -2,18 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "@/components/Layout.vue";
 import HomePage from "@/views/Home.vue";
-import AboutUs from "@/views/About.vue";
-import NewsCenter from "@/views/News.vue";
-import ContactUs from "@/views/Contact.vue";
-import ViewList from "@/views/View.vue";
-import Book from "@/views/Book.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "Surf",
     component: Layout,
     redirect: "/home",
     children: [
@@ -25,27 +20,32 @@ const routes = [
       {
         path: "/about",
         name: "About",
-        component: AboutUs,
+        component: () =>
+          import(/* webpackChunkName: "about-page" */ "../views/About.vue"),
       },
       {
         path: "/news",
         name: "News",
-        component: NewsCenter,
+        component: () =>
+          import(/* webpackChunkName: "news-page" */ "../views/News.vue"),
       },
       {
         path: "/contact",
         name: "Contact",
-        component: ContactUs,
+        component: () =>
+          import(/* webpackChunkName: "contact-page" */ "../views/Contact.vue"),
       },
       {
         path: "/view",
-        name: "view",
-        component: ViewList,
+        name: "View",
+        component: () =>
+          import(/* webpackChunkName: "view-page" */ "../views/View.vue"),
       },
       {
         path: "/book",
         name: "Book",
-        component: Book,
+        component: () =>
+          import(/* webpackChunkName: "book-page" */ "../views/Book.vue"),
       },
     ],
   },

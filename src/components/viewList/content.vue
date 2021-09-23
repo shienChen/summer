@@ -2,33 +2,32 @@
   <div class="content">
     <div class="commonTitle">
       <img src="../../assets/images/prve.png" alt="" @click="jump('/home')" />
-      <h3 class="v_title">Aranya Art Center</h3>
+      <h3 class="v_title">{{ locationName }}</h3>
     </div>
-    <div class="item flex" k-repeat="view_Item view" k-repeat-self="true">
+    <div class="item flex" v-for="item in list" :key="item.id">
       <div class="img">
-        <img src="../../assets/images/view01.png" alt="" />
+        <img
+          :src="`http://summer-vue.chengcheng.kooboo.site${item.cover}`"
+          alt=""
+        />
       </div>
       <div class="info">
-        <h3 k-content="view_Item.title">Aranya beach</h3>
-        <p k-content="view_Item.description">
-          I'm a paragraph. Click here to add your own text and edit me. It’s
-          easy. Just click Edit Text” or double click me to add
-        </p>
-        <span k-content="view_Item.label-one">This is a label</span>
-        <span k-content="view_Item.label-two">This is a label</span>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.desc }}</p>
+        <span v-for="(label, i) in item.labels" :key="i">{{ label }}</span>
         <div class="heng"></div>
         <div class="v_location">
           <svg class="icon" aria-hidden="true" id="v_location">
             <use xlink:href="#icon-location_blue_14"></use>
           </svg>
-          <span class="location" k-content="view_Item.location"
-            >Dapuhe Town, Changli County, Qinhuangdao City</span
-          >
+          <span class="location" k-content="view_Item.location">{{
+            item.address
+          }}</span>
         </div>
       </div>
       <div class="more">
         <span>From</span>
-        <span class="money">$80</span>
+        <span class="money">${{ item.from }}</span>
         <a @click="jump('/book')">More Info</a>
       </div>
     </div>
@@ -36,7 +35,36 @@
 </template>
 
 <script>
+import { getDestinationList } from "@/api/destination";
+
 export default {
+  data() {
+    return {
+      list: [],
+      locationName: "",
+      params: {
+        pageSize: 10,
+        pageNum: 1,
+      },
+    };
+  },
+  async mounted() {
+    this.locationName = this.$route.query.name;
+    const result = await getDestinationList(
+      Object.assign({
+        location: this.locationName.split(" ").join("-"),
+      })
+    );
+    this.list = result.list;
+    this.list.forEach((item) => {
+      try {
+        item.labels = JSON.parse(item.labels);
+      } catch (error) {
+        item.labels = [];
+      }
+    });
+    console.log(this.list);
+  },
   methods: {
     jump(val) {
       this.$router.push(val);

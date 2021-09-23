@@ -1,56 +1,41 @@
 <template>
   <div class="picture-wrapper">
-    <div class="picture-item">
+    <div class="picture-item" v-for="location in locations" :key="location.ld">
       <img src="@/assets/images/surf02.png" alt="" />
       <div class="mask"></div>
       <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
-      </div>
-    </div>
-    <div class="picture-item">
-      <div>
-        <img src="@/assets/images/surf02.png" alt="" />
-      </div>
-      <div class="mask"></div>
-      <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
-      </div>
-    </div>
-    <div class="picture-item">
-      <div>
-        <img src="@/assets/images/surf02.png" alt="" />
-      </div>
-      <div class="mask"></div>
-      <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
-      </div>
-    </div>
-    <div class="picture-item">
-      <div>
-        <img src="@/assets/images/surf02.png" alt="" />
-      </div>
-      <div class="mask"></div>
-      <div class="mask_txt">
-        <h3>WUZHIZHOU ISLAND</h3>
-        <p>Sanya|China</p>
-        <a @click="jump('/view')"><span id="view">View</span></a>
+        <h3>{{ location.name }}</h3>
+        <p>{{ `${location.city}|${location.country}` }}</p>
+        <a @click="toViewPage(location.name)"><span id="view">View</span></a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { getLocationList } from "@/api/location";
+
 export default {
   name: "view",
+  data: () => ({
+    locations: [],
+    params: {
+      pageSize: 4,
+      pageNum: 1,
+    },
+  }),
+  async mounted() {
+    const result = await getLocationList(this.params);
+    this.locations = result.list;
+  },
   methods: {
-    jump(val) {
-      this.$router.push(val);
+    toViewPage(locationId) {
+      this.$router.push({
+        name: "View",
+        query: {
+          name: locationId,
+        },
+      });
     },
   },
 };

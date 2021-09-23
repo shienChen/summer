@@ -5,6 +5,15 @@ function resolve(dir) {
 
 module.exports = {
   productionSourceMap: false,
+  publicPath: "./",
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://summer-vue.chengcheng.kooboo.site",
+        changeOrigin: true,
+      },
+    },
+  },
   configureWebpack: {
     resolve: {
       alias: {

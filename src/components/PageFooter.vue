@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: "Footer",
+  name: "PageFooter",
 };
 </script>
 <style lang="scss" scoped>
