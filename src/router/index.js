@@ -42,10 +42,15 @@ const routes = [
           import(/* webpackChunkName: "view-page" */ "../views/View.vue"),
       },
       {
-        path: "/book",
+        path: "/book/:id",
         name: "Book",
         component: () =>
           import(/* webpackChunkName: "book-page" */ "../views/Book.vue"),
+      },
+      {
+        path: "/bookDetails",
+        name: "BookDetails",
+        component: BookDetails,
       },
     ],
   },

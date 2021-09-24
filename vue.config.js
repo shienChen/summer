@@ -21,4 +21,26 @@ module.exports = {
       },
     },
   },
+  devServer: {
+    host: "localhost",
+    port: 8080,
+    proxy: {
+      "/api": {
+        target: "http://summer-vue.chengcheng.kooboo.site/",
+        changeOrigin: true,
+      },
+      "/order": {
+        target: "http://summer-vue.chengcheng.kooboo.site/",
+        changeOrigin: true,
+      },
+      "/user": {
+        target: "http://summer-vue.chengcheng.kooboo.site/",
+        changeOrigin: true,
+      },
+      "/email": {
+        target: "http://summer-vue.chengcheng.kooboo.site/",
+        changeOrigin: true,
+      },
+    },
+  },
 };

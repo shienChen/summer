@@ -9,7 +9,7 @@
 
 <script>
 import location from "./location.vue";
-import surfView from "./view.vue";
+import surfView from "./surfView.vue";
 
 export default {
   name: "surf",

@@ -28,6 +28,8 @@ export default {
   padding-top: 3.6rem;
   padding-bottom: 3.6rem;
 
+  // display: none;
+
   .container {
     max-width: 64rem;
     margin: 0 auto;

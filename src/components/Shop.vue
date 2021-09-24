@@ -62,9 +62,7 @@
 </template>
 
 <script>
-export default {
-  name: "Shop",
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

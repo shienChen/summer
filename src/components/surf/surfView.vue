@@ -48,6 +48,7 @@ export default {
   .picture-item {
     width: 25%;
     position: relative;
+    height: 740px;
 
     img {
       width: 100%;
@@ -131,7 +132,11 @@ export default {
         transition: all 0.55s ease;
       }
     }
-
+    &:nth-child(1) {
+      .mask_txt h3 {
+        width: 7rem;
+      }
+    }
     &:nth-child(2) {
       .mask_txt h3 {
         width: 7rem;

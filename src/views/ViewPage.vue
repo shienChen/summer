@@ -6,7 +6,7 @@
 import viewList from "@/components/viewList/index.vue";
 
 export default {
-  name: "View",
+  name: "ViewPage",
   components: {
     viewList,
   },

@@ -65,9 +65,7 @@
 </template>
 
 <script>
-export default {
-  name: "location",
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -124,6 +122,7 @@ export default {
 
       .info-title {
         padding: 1.2rem 0 0 1.2rem;
+        text-align: left;
 
         h3 {
           font-size: 0.9rem;
