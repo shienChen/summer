@@ -50,6 +50,7 @@ export default {
   },
   async mounted() {
     this.locationName = this.$route.query.name;
+    console.log(this.locationName);
     const result = await getDestinationList(
       Object.assign({
         location: this.locationName.split(" ").join("-"),

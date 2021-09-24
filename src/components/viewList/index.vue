@@ -1,7 +1,7 @@
 <template>
   <div class="p_view">
     <!-- <viewTitle /> -->
-    <!-- <viewContent /> -->
+
     <div class="title">
       <!-- <p>直接获取参数{{ this.$route.params.id }}</p> -->
       <li v-for="item in viewCategory" :key="item.id">
@@ -10,7 +10,8 @@
         }}</a>
       </li>
     </div>
-    <div class="content">
+    <viewContent />
+    <!-- <div class="content">
       <div class="commonTitle">
         <img src="../../assets/images/prve.png" alt="" @click="jump('/home')" />
         <h3 class="v_title">Aranya Art Center</h3>
@@ -40,12 +41,13 @@
           <a @click="jumpBook(item.id)">More Info</a>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ViewContent from "./content.vue";
 
 export default {
   data() {
@@ -55,6 +57,9 @@ export default {
       viewList: [],
       total: 0,
     };
+  },
+  components: {
+    ViewContent,
   },
   created() {
     this.getViewCategory();

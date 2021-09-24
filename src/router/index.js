@@ -39,7 +39,7 @@ const routes = [
         path: "/view",
         name: "View",
         component: () =>
-          import(/* webpackChunkName: "view-page" */ "../views/View.vue"),
+          import(/* webpackChunkName: "view-page" */ "../views/ViewPage.vue"),
       },
       {
         path: "/book/:id",
@@ -50,7 +50,10 @@ const routes = [
       {
         path: "/bookDetails",
         name: "BookDetails",
-        component: BookDetails,
+        component: () =>
+          import(
+            /* webpackChunkName: "book-page" */ "../views/BookDetails.vue"
+          ),
       },
     ],
   },
