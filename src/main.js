@@ -7,6 +7,8 @@ import "./plugins/element.js";
 import "@/style/index.scss";
 import "./assets/iconfont/iconfont.js";
 
+Vue.prototype.bus = new Vue();
+
 Vue.config.productionTip = false;
 
 new Vue({

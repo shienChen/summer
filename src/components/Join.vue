@@ -8,19 +8,23 @@
   >
     <h3>Join our mailing list</h3>
     <el-form-item prop="email">
-      <el-input v-model="emailForm.email" placeholder="Enter your email her">
+      <el-input
+        v-model="emailForm.email"
+        placeholder="Enter your email her"
+        class="joinInput"
+      >
       </el-input>
     </el-form-item>
     <el-button class="bookDetailsBtn" @click="addEmail"
       >Subscribe Now</el-button
     >
     <span>or</span>
-    <a href="/contact" target="_blank">Concact Us</a>
+    <a @click="jump('/contact')" target="_blank">Concact Us</a>
   </el-form>
 </template>
 
 <script>
-import $ from "jquery";
+import axios from "axios";
 export default {
   data() {
     //验证邮箱规则
@@ -50,23 +54,17 @@ export default {
   methods: {
     addEmail() {
       this.$refs.emailRef.validate(async (valid) => {
-        // console.log(valid);
         if (!valid) return;
-        var data = JSON.stringify(this.emailForm);
-        $.ajax({
-          url: "/email",
-          type: "POST",
-          data: data,
-          cache: false,
-          success: function () {
-            $("#success").show();
-            $("#bookDetailsForm").trigger("reset");
-          },
-          error: function () {
-            $("#error").show();
-          },
-        });
+        const res = await axios.post("/api/email", this.emailForm);
+        if (res.status !== 200) {
+          this.$message.error("Email failed, please try later.");
+        }
+        this.$message.success("You have placed your email successfully.!");
+        this.$refs.emailRef.resetFields();
       });
+    },
+    jump(val) {
+      this.$router.push(val);
     },
   },
 };
@@ -148,6 +146,7 @@ export default {
     text-align: center;
     color: #2296f3;
     line-height: 22px;
+    cursor: pointer;
   }
 }
 </style>

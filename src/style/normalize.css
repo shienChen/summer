@@ -515,7 +515,7 @@ h3.v_title{
 	line-height: 33px;
 	margin-top: 16px;
 	padding-bottom: 24px;
-  /* border-bottom: rgb(25 40 69 / 30%) 1px solid; */
+  border-bottom: #1928454d 1px solid;
 }
 
 .commonText span{
@@ -592,18 +592,7 @@ h3.v_title{
   left: 0;
   cursor: pointer;
 }
-
-.commonTitle p{
-	text-align: center;
-	font-size: 24px;
-	font-family: PingFangSC, PingFangSC-Regular;
-	font-weight: 400; 
-	color: #515161;
-	line-height: 33px;
-	margin-top: 16px;
-	padding-bottom: 24px;
-  /* border-bottom: rgb(25 40 69 / 30%) 1px solid; */
-}
+ 
 
 .book {
   background-image: url(../assets/images/i_banner.png);
@@ -666,4 +655,87 @@ small.help-block {
 
 #join small.help-block{
 	text-align: center; 
+}
+
+.bookDetails .contentBox{
+	justify-content: space-between;
+	padding-bottom: 56px; 
+}
+
+.bookDetails .order{
+	width: 26%;
+	border: 1px solid #a7b0be;
+	border-radius: 8px;
+	padding: 24px 24px 56px;
+}
+
+.bookDetails .order span{
+	font-size: 14px;
+	font-family: PingFangSC, PingFangSC-Regular;
+	font-weight: 400; 
+	color: #192845;
+	line-height: 20px;
+	text-align: left;
+}
+
+.bookDetails .ticket{
+	margin-top: 24px;
+}
+
+.bookDetails .ticket div,.bookDetails .Subtotal div,.bookDetails .Total{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.bookDetails .ticket div:last-child{
+	margin-bottom: 0;
+}
+
+.bookDetails .ticket,.bookDetails .Subtotal{
+	border-bottom: #1928454d 1px solid;
+	margin-bottom: 24px;
+	padding-bottom: 24px;
+}
+
+.bookDetails .Total{
+	margin-bottom: 0;
+ }
+
+
+.bookDetails .order span.right{ 
+	font-family: PingFangSC, PingFangSC-Medium;
+	font-weight: 500;
+}
+
+.bookDetails .order .Total span{
+	font-size: 16px;
+	font-family: PingFangSC, PingFangSC-Medium;
+	font-weight: 500; 
+	color: #192845;
+	line-height: 22px;
+}
+
+.bookDetails .order .Total span.right{ 
+	font-family: DINAlternate, DINAlternate-Bold;
+	font-weight: 700; 
+}
+
+.bookDetailsBtn{
+	background: #c0ffec;
+	border-radius: 4px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.10);
+	padding: 10px 75px; 
+	font-size: 14px;
+	font-family: PingFangSC, PingFangSC-Medium;
+	font-weight: 500; 
+	color: #192845;
+	line-height: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.joinInput.el-input input.el-input__inner {
+  text-align: center;
 }

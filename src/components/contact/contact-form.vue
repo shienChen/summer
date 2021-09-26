@@ -32,8 +32,6 @@
         style="height: 180px"
       ></el-input>
     </el-form-item>
-    <div id="success">You have placed your order successfully.!</div>
-    <div id="error">Order failed, please try later.</div>
     <el-button type="submit" class="btn btn-block" @click="addUser"
       >Subscribe</el-button
     >
@@ -41,7 +39,7 @@
 </template>
 
 <script>
-import $ from "jquery";
+import axios from "axios";
 export default {
   data() {
     //验证邮箱规则
@@ -99,22 +97,28 @@ export default {
       this.$refs.FormRef.validate(async (valid) => {
         console.log(valid);
         if (!valid) return;
-        var data = JSON.stringify(this.ruleForm);
-        $.ajax({
-          url: "/user",
-          type: "POST",
-          data: data,
-          cache: false,
-          success: function () {
-            $("#success").show();
-            $("#bookDetailsForm").trigger("reset");
-            // api请求成功的回调 （页面跳转）
-            // window.location.href("~")
-          },
-          error: function () {
-            $("#error").show();
-          },
-        });
+        // const { data: res } = await axios.post("/api/user", this.ruleForm);
+        const res = await axios.post("/api/user", this.ruleForm);
+        // console.log(res);
+        if (res.status !== 200) {
+          this.$message.error("Message failed, please try later.");
+        }
+        this.$message.success("You have placed your message successfully.!");
+        this.$refs.FormRef.resetFields();
+        //   axios({
+        //     methods: "post",
+        //     url: "/api/user",
+        //     data: this.ruleForm,
+        //   })
+        //     .then(function (res) {
+        //       console.log(res);
+        //       this.$message.success("You have placed your order successfully.!");
+        //     })
+        //     // .catch((error) => console.log(error));
+        //     .catch(function (error) {
+        //       console.log(error);
+        //       this.$message.error("Order failed, please try later.");
+        //     });
       });
     },
   },

@@ -3,38 +3,18 @@
     <div class="container">
       <h3 class="title">News Center</h3>
       <div class="wrapper">
-        <div class="item flex">
+        <div class="item flex" v-for="item in newsList" :key="item.id">
           <div class="img">
-            <img src="../assets/images/news01.png" />
+            <!-- <img src="../assets/images/news01.png" /> -->
+            <img :src="item.img" />
           </div>
           <div class="text">
             <div class="title flex">
-              <h3>Summer Time</h3>
-              <span id="time">2021-9-8</span>
+              <h3>{{ item.title }}</h3>
+              <span id="time">{{ item.time }}</span>
             </div>
             <p>
-              I'm a paragraph. Click here to add your own text and edit me. It’s
-              easy. Just click “Edit Text” or double click me to add your own
-              content and make…
-            </p>
-            <div class="Btn">
-              <span>real-time info</span>
-            </div>
-          </div>
-        </div>
-        <div class="item flex">
-          <div class="img">
-            <img src="../assets/images/news01.png" />
-          </div>
-          <div class="text">
-            <div class="title flex">
-              <h3>Summer Time</h3>
-              <span id="time">2021-9-8</span>
-            </div>
-            <p>
-              I'm a paragraph. Click here to add your own text and edit me. It’s
-              easy. Just click “Edit Text” or double click me to add your own
-              content and make…
+              {{ item.describe }}
             </p>
             <div class="Btn">
               <span>real-time info</span>
@@ -48,8 +28,26 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "News",
+  data() {
+    return {
+      newsList: [],
+      total: 0,
+    };
+  },
+  created() {
+    this.getNewsList();
+  },
+  methods: {
+    async getNewsList() {
+      const { data: res } = await axios.get("/api/news/list");
+      console.log(res);
+      this.newsList = res.data.list;
+      this.total = res.data.total;
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="picture-wrapper">
-    <div class="picture-item" v-for="location in locations" :key="location.ld">
+    <div class="picture-item" v-for="location in locations" :key="location.id">
       <img src="@/assets/images/surf02.png" alt="" />
       <div class="mask"></div>
       <div class="mask_txt">
@@ -16,7 +16,6 @@
 import { getLocationList } from "@/api/location";
 
 export default {
-  name: "view",
   data: () => ({
     locations: [],
     params: {

@@ -1,6 +1,6 @@
 <template>
   <div class="timeBox">
-    <!-- <p>直接获取参数{{ this.$route.params.id }}</p> -->
+    <!-- <p>直接获取参数{{ this.$route.query.id }}</p> -->
     <div class="time">
       <div class="shu">
         <span>From</span>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getBookId } from "@/api/book.js";
 
 export default {
   data() {
@@ -68,16 +68,21 @@ export default {
   created() {
     this.getPrice();
   },
+  updated() {
+    sessionStorage.setItem("aduNum", this.aduNum);
+    sessionStorage.setItem("kidNum", this.kidNum);
+    sessionStorage.setItem("Subtotal", this.Subtotal);
+    sessionStorage.setItem("Taxs", this.Taxs);
+    sessionStorage.setItem("Totals", this.Totals);
+  },
   methods: {
     async getPrice() {
-      const { data: res } = await axios.get("/api/view/get/", {
-        params: {
-          id: this.$route.params.id,
-        },
+      this.id = this.$route.query.id;
+      const result = await getBookId({
+        id: this.id,
       });
-      console.log(res);
-      this.price = res.data.price;
-      // console.log(this.price);
+      console.log(result);
+      this.price = result.from;
     },
     addAduNum() {
       this.aduNum = parseInt(this.aduNum) + 1;
@@ -95,11 +100,15 @@ export default {
     KidPrices() {
       return (this.kidNum * this.price) / 2;
     },
-    Taxs() {
-      return (this.AduPrices + this.KidPrices) * 0.05;
-    },
-    Totals() {
+    Subtotal() {
       return this.AduPrices + this.KidPrices;
+    },
+    Taxs() {
+      return this.Subtotal * 0.05;
+    },
+
+    Totals() {
+      return this.Subtotal * 1.05;
     },
   },
 };

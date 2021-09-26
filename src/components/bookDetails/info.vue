@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import $ from "jquery";
+import axios from "axios";
 export default {
   data() {
     //验证邮箱规则
@@ -121,22 +121,13 @@ export default {
       this.$refs.infoRef.validate(async (valid) => {
         // console.log(valid);
         if (!valid) return;
-        var data = JSON.stringify(this.infoForm);
-        $.ajax({
-          url: "/order",
-          type: "POST",
-          data: data,
-          cache: false,
-          success: function () {
-            $("#success").show();
-            $("#bookDetailsForm").trigger("reset");
-            // api请求成功的回调 （页面跳转）
-            // window.location.href("~")
-          },
-          error: function () {
-            $("#error").show();
-          },
-        });
+        const res = await axios.post("/api/order", this.infoForm);
+        if (res.status !== 200) {
+          this.$message.error("Order failed, please try later.");
+        }
+        this.$message.success("You have placed your order successfully.!");
+        this.$refs.infoRef.resetFields();
+        this.$router.push("/bookSucceed");
       });
     },
   },

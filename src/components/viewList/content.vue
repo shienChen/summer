@@ -28,7 +28,7 @@
       <div class="more">
         <span>From</span>
         <span class="money">${{ item.from }}</span>
-        <a @click="jump('/book')">More Info</a>
+        <a @click="jump(item.id)">More Info</a>
       </div>
     </div>
   </div>
@@ -46,29 +46,43 @@ export default {
         pageSize: 10,
         pageNum: 1,
       },
+      type: "",
     };
   },
   async mounted() {
     this.locationName = this.$route.query.name;
-    console.log(this.locationName);
-    const result = await getDestinationList(
-      Object.assign({
-        location: this.locationName.split(" ").join("-"),
-      })
-    );
-    this.list = result.list;
-    this.list.forEach((item) => {
-      try {
-        item.labels = JSON.parse(item.labels);
-      } catch (error) {
-        item.labels = [];
-      }
+    this.getViewList();
+    this.bus.$on("type", (res) => {
+      this.locationName = res;
+      // console.log("type=" + this.locationName);
+      this.getViewList();
     });
-    console.log(this.list);
   },
   methods: {
-    jump(val) {
-      this.$router.push(val);
+    jump(id) {
+      this.$router.push({
+        name: "Book",
+        query: {
+          id: id,
+        },
+      });
+    },
+    async getViewList() {
+      console.log("this.locationName=" + this.locationName);
+      const result = await getDestinationList(
+        Object.assign({
+          location: this.locationName.split(" ").join("-"),
+        })
+      );
+      this.list = result.list;
+      this.list.forEach((item) => {
+        try {
+          item.labels = JSON.parse(item.labels);
+        } catch (error) {
+          item.labels = [];
+        }
+      });
+      // console.log(this.list);
     },
   },
 };
