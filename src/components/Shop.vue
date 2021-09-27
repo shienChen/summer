@@ -32,6 +32,7 @@
       </div>
       <div class="picture">
         <img src="../assets/images/surf_board.png" alt="" />
+        <div class="circleBig"><div class="circle"></div></div>
       </div>
       <div class="details">
         <span>DOUBLE CONCAVE WITH VEE SHAPE LOW POINT</span>
@@ -169,6 +170,39 @@ export default {};
       width: 14.6rem;
       margin-top: 2rem;
       margin-right: 0.8rem;
+      position: relative;
+      .circleBig {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+        background: #ffffff;
+        border-radius: 50%;
+        position: absolute;
+        top: 12rem;
+        right: 4rem;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 90px;
+          height: 1px;
+          opacity: 0.5;
+          background: #ffffff;
+          top: 10px;
+        }
+        .circle {
+          width: 8px;
+          height: 8px;
+          opacity: 1;
+          background: #68d48c;
+          border-radius: 50%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+        }
+      }
     }
 
     .details {

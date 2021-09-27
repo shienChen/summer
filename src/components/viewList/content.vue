@@ -49,7 +49,7 @@ export default {
       type: "",
     };
   },
-  async mounted() {
+  async created() {
     this.locationName = this.$route.query.name;
     this.getViewList();
     this.bus.$on("type", (res) => {

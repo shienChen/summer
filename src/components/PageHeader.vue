@@ -7,22 +7,28 @@
         </svg>
         <ul class="header__nav">
           <li class="navitem">
-            <a class="nav-a" @click="jump('/home')" target="_self"
+            <a :class="{ active: show == 1 }" @click="jumpHome()" target="_self"
               ><span>Home</span></a
             >
           </li>
           <li class="navitem">
-            <a class="nav-a" @click="jump('/about')" target="_self"
+            <a
+              :class="{ active: show == 2 }"
+              @click="jumpAbout()"
+              target="_self"
               ><span>About Us</span></a
             >
           </li>
           <li class="navitem">
-            <a class="nav-a" @click="jump('/news')" target="_self"
+            <a :class="{ active: show == 3 }" @click="jumpNews()" target="_self"
               ><span>News Center</span></a
             >
           </li>
           <li class="navitem">
-            <a class="nav-a" @click="jump('/contact')" target="_self"
+            <a
+              :class="{ active: show == 4 }"
+              @click="jumpContact()"
+              target="_self"
               ><span>Contact US</span></a
             >
           </li>
@@ -36,9 +42,30 @@
 <script>
 export default {
   name: "PageHeader",
+  data() {
+    return {
+      str: "",
+      id: "",
+      strs: "",
+      show: 1,
+    };
+  },
   methods: {
-    jump(val) {
-      this.$router.push(val);
+    jumpHome() {
+      this.$router.push("/home");
+      this.show = 1;
+    },
+    jumpAbout() {
+      this.$router.push("/about");
+      this.show = 2;
+    },
+    jumpNews() {
+      this.$router.push("/news");
+      this.show = 3;
+    },
+    jumpContact() {
+      this.$router.push("/contact");
+      this.show = 4;
     },
   },
 };
@@ -75,6 +102,7 @@ export default {
         transition: all 0.4s ease-out 0s;
         padding: 0 1.3rem;
         line-height: 3.2em;
+
         &:hover {
           a {
             color: #c0ffec;
@@ -87,13 +115,12 @@ export default {
           transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
           font-family: PingFangSC, PingFangSC-Semibold;
           cursor: pointer;
-
-          .active {
-            color: #c0ffec;
-          }
         }
       }
     }
   }
+}
+#header .content .header__nav li.navitem a.active {
+  color: #c0ffec;
 }
 </style>

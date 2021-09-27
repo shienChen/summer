@@ -5,23 +5,31 @@
       <div class="wrapper">
         <div class="item flex" v-for="item in newsList" :key="item.id">
           <div class="img">
-            <!-- <img src="../assets/images/news01.png" /> -->
-            <img :src="item.img" />
+            <img :src="`http://summer-vue.chengcheng.kooboo.site${item.img}`" />
           </div>
           <div class="text">
             <div class="title flex">
               <h3>{{ item.title }}</h3>
-              <span id="time">{{ item.time }}</span>
+              <span id="time">{{ item.time | dateFormat }}</span>
             </div>
             <p>
               {{ item.describe }}
             </p>
             <div class="Btn">
-              <span>real-time info</span>
+              <span @click="jump(item.id)">real-time info</span>
             </div>
           </div>
         </div>
       </div>
+      <!-- 分页 -->
+      <el-pagination
+        @current-change="handleCurrentChange"
+        :current-page="queryInfo.pagenum"
+        :page-size="queryInfo.pagesize"
+        layout=" prev, pager, next"
+        :total="total"
+      >
+      </el-pagination>
     </div>
     <div class="news_mask"></div>
   </div>
@@ -35,6 +43,10 @@ export default {
     return {
       newsList: [],
       total: 0,
+      queryInfo: {
+        pagenum: 1,
+        pagesize: 5,
+      },
     };
   },
   created() {
@@ -42,10 +54,25 @@ export default {
   },
   methods: {
     async getNewsList() {
-      const { data: res } = await axios.get("/api/news/list");
+      const { data: res } = await axios.get("/api/news/list", {
+        params: this.queryInfo,
+      });
       console.log(res);
       this.newsList = res.data.list;
       this.total = res.data.total;
+    },
+    jump(id) {
+      this.$router.push({
+        name: "NewsDetails",
+        query: {
+          id: id,
+        },
+      });
+    },
+    handleCurrentChange(newPage) {
+      // console.log(newPage)
+      this.queryInfo.pagenum = newPage;
+      this.getNewsList();
     },
   },
 };
@@ -101,6 +128,7 @@ export default {
         }
 
         .text {
+          width: 100%;
           .title {
             justify-content: space-between;
             align-items: center;
@@ -130,6 +158,10 @@ export default {
             color: #515161;
             line-height: 1.2rem;
             margin: 1.2rem 0;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
           }
 
           .Btn {
@@ -146,6 +178,7 @@ export default {
               line-height: 0.8rem;
               display: inline-block;
               padding: 0.4rem 0.6rem;
+              cursor: pointer;
             }
           }
         }

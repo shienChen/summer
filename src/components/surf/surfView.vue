@@ -1,7 +1,10 @@
 <template>
   <div class="picture-wrapper">
     <div class="picture-item" v-for="location in locations" :key="location.id">
-      <img src="@/assets/images/surf02.png" alt="" />
+      <img
+        :src="`http://summer-vue.chengcheng.kooboo.site${location.cover}`"
+        alt=""
+      />
       <div class="mask"></div>
       <div class="mask_txt">
         <h3>{{ location.name }}</h3>
@@ -25,6 +28,7 @@ export default {
   }),
   async mounted() {
     const result = await getLocationList(this.params);
+    console.log(result);
     this.locations = result.list;
   },
   methods: {
@@ -43,6 +47,9 @@ export default {
 <style lang="scss" scoped>
 .picture-wrapper {
   display: flex;
+  max-width: 72rem;
+  margin: 0 auto;
+  justify-content: space-between;
 
   .picture-item {
     width: 25%;
@@ -50,7 +57,7 @@ export default {
     height: 740px;
 
     img {
-      width: 100%;
+      width: auto;
     }
 
     .mask {

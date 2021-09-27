@@ -40,6 +40,15 @@
       background: linear-gradient(270deg, #c0e1ff 0%, #e2f1fe 97%);
       box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
       position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        border: 15px solid transparent;
+        border-top-color: #c0e1ff;
+        bottom: -30px;
+        left: 50%;
+        margin-left: -15px;
+      }
 
       span {
         font-size: 0.8rem;
@@ -65,6 +74,7 @@
     #location_cu {
       width: 2rem;
       height: 3.25rem;
+      margin-top: 0.5rem;
     }
   }
 
