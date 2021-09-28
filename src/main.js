@@ -26,6 +26,11 @@ Vue.filter("dateFormat", function (originVal) {
   return `${y}-${m}-${d}`;
 });
 
+import VueAwesomeSwiper from "vue-awesome-swiper";
+Vue.use(VueAwesomeSwiper);
+
+import "swiper/css/swiper.css";
+
 new Vue({
   router,
   store,

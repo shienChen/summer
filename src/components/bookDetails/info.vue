@@ -27,12 +27,26 @@
           ><el-input v-model="infoForm.number"></el-input
         ></el-form-item>
       </div>
-      <el-form-item label="Country" prop="region"
-        ><el-select v-model="infoForm.region"
+      <!-- <el-form-item label="Country" prop="region">
+        <el-select v-model="infoForm.region"
           ><el-option label="Volvo" value="Volvo"></el-option
           ><el-option label="Saab" value="Saab"></el-option
-          ><el-option label="Opel" value="Opel"></el-option></el-select
-      ></el-form-item>
+          ><el-option label="Opel" value="Opel"></el-option
+        ></el-select>
+      </el-form-item> -->
+
+      <!-- <h2>{{ countryTitle }}</h2> -->
+      <el-form-item label="Country" prop="region">
+        <foreign-area
+          prop="region"
+          popularCity="受欢迎的国家"
+          selectBg="选择器的背景颜色"
+          groupBg="选项的背景颜色"
+          @selectCountry="监听选中的国家;"
+          v-on:func="country"
+        ></foreign-area>
+      </el-form-item>
+
       <div class="text">
         By completing this booking I acknowledge I have read and accepted the
         <a href="/"><span>Property Policies.</span></a>
@@ -48,7 +62,9 @@
 
 <script>
 import axios from "axios";
+import foreignArea from "@/components/bookDetails/foreignArea.vue";
 export default {
+  components: { foreignArea },
   data() {
     //验证邮箱规则
     var checkEmail = (rule, value, cb) => {
@@ -116,12 +132,14 @@ export default {
       },
     };
   },
+
   methods: {
     addOrder() {
       this.$refs.infoRef.validate(async (valid) => {
         // console.log(valid);
         if (!valid) return;
         const res = await axios.post("/api/order", this.infoForm);
+        console.log(res);
         if (res.status !== 200) {
           this.$message.error("Order failed, please try later.");
         }
@@ -129,6 +147,11 @@ export default {
         this.$refs.infoRef.resetFields();
         this.$router.push("/bookSucceed");
       });
+    },
+    country(e) {
+      // this.countryTitle = e;
+      this.infoForm.region = e;
+      console.log("countryTitle=" + this.infoForm.region);
     },
   },
 };
