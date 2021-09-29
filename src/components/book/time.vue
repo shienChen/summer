@@ -4,36 +4,40 @@
     <div class="time">
       <div class="shu">
         <span>From</span>
-        <span class="money">${{ price }}</span>
+        <span class="money">${{ order.price }}</span>
         <span>one person</span>
       </div>
       <p>Lineup</p>
       <p class="band">Mandarin Band</p>
       <div class="showTime number">
-        <span>Show Time</span>
-        <img src="/images/calendar.png" alt="" />
-        <input
-          type="text"
-          class="demo-input"
-          placeholder="请选择日期"
-          id="test1"
+        <span v-show="show">Show Time</span>
+        <div>
+          <input type="text" v-model="date" />
+        </div>
+        <img
+          src="../../assets/images/calendar.png"
+          alt=""
+          id="orderTime"
+          @click="isShow"
         />
       </div>
       <div class="adulys number">
-        <span>Adulys：</span><input type="number" v-model="aduNum" />
+        <span>Adulys：</span
+        ><input type="number" min="0" v-model="order.aduNum" />
         <img src="/images/preset.png" alt="" @click="addAduNum" />
       </div>
       <div class="kids number">
-        <span>Kids：</span><input type="number" v-model="kidNum" />
+        <span>Kids：</span
+        ><input type="number" min="0" v-model="order.kidNum" />
         <img src="/images/preset.png" alt="" @click="subKidNum" />
       </div>
       <div class="flex">
-        <span>{{ aduNum }}</span
+        <span>{{ order.aduNum }}</span
         ><span class="name">Adults</span>
         <span class="right">${{ AduPrices }}</span>
       </div>
       <div class="flex">
-        <span>{{ kidNum }}</span
+        <span>{{ order.kidNum }}</span
         ><span class="name">Kids</span>
         <span class="right">${{ KidPrices }}</span>
       </div>
@@ -52,28 +56,22 @@
 
 <script>
 import { getBookId } from "@/api/book.js";
+import laydate from "layui-laydate";
 
 export default {
   data() {
     return {
-      aduNum: 1,
-      kidNum: 0,
-      aduPrice: 0,
-      kidPrice: 0,
-      tax: 0,
-      total: 0,
-      price: 0,
+      order: {
+        price: 0,
+        aduNum: 0,
+        kidNum: 0,
+      },
+      date: "",
+      show: true,
     };
   },
   created() {
     this.getPrice();
-  },
-  updated() {
-    sessionStorage.setItem("aduNum", this.aduNum);
-    sessionStorage.setItem("kidNum", this.kidNum);
-    sessionStorage.setItem("Subtotal", this.Subtotal);
-    sessionStorage.setItem("Taxs", this.Taxs);
-    sessionStorage.setItem("Totals", this.Totals);
   },
   methods: {
     async getPrice() {
@@ -82,23 +80,32 @@ export default {
         id: this.id,
       });
       console.log(result);
-      this.price = result.from;
+      this.order.price = result.from;
     },
     addAduNum() {
-      this.aduNum = parseInt(this.aduNum) + 1;
+      // this.aduNum = parseInt(this.aduNum) + 1;
     },
     subKidNum() {
-      if (this.kidNum > 0) {
-        this.kidNum = parseInt(this.kidNum) - 1;
-      }
+      // if (this.kidNum > 0) {
+      //   this.kidNum = parseInt(this.kidNum) - 1;
+      // }
+    },
+    isShow() {
+      this.show = false;
     },
   },
   computed: {
+    aduNum() {
+      return this.order.aduNum;
+    },
+    kidNum() {
+      return this.order.kidNum;
+    },
     AduPrices() {
-      return this.aduNum * this.price;
+      return this.order.aduNum * this.order.price;
     },
     KidPrices() {
-      return (this.kidNum * this.price) / 2;
+      return (this.order.kidNum * this.order.price) / 2;
     },
     Subtotal() {
       return this.AduPrices + this.KidPrices;
@@ -110,6 +117,38 @@ export default {
     Totals() {
       return this.Subtotal * 1.05;
     },
+  },
+  watch: {
+    aduNum(aduNum) {
+      sessionStorage.setItem("aduNum", aduNum);
+    },
+    kidNum(kidNum) {
+      sessionStorage.setItem("kidNum", kidNum);
+    },
+    Subtotal(Subtotal) {
+      sessionStorage.setItem("Subtotal", Subtotal);
+    },
+    Taxs(Taxs) {
+      sessionStorage.setItem("Taxs", Taxs);
+    },
+    Totals(Totals) {
+      sessionStorage.setItem("Totals", Totals);
+    },
+    date(date) {
+      sessionStorage.setItem("date", date);
+    },
+  },
+  mounted() {
+    laydate.render({
+      elem: "#orderTime", // 指定元素
+      type: "datetime", // 组件的类型：year,month,time···
+      format: "yyyy-MM-dd HH:mm", // 设置显示格式
+      done: (value) => {
+        // 点击确认执行的回调函数，会把当前选择的时间传入进来
+        // 把选择的时间赋值给先前定义好的变量，显示在页面
+        this.date = value;
+      },
+    });
   },
 };
 </script>
@@ -225,5 +264,8 @@ export default {
       margin-bottom: 24px;
     }
   }
+}
+#orderTime {
+  cursor: pointer;
 }
 </style>
