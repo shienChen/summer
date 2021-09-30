@@ -24,12 +24,12 @@
       <div class="adulys number">
         <span>Adulys：</span
         ><input type="number" min="0" v-model="order.aduNum" />
-        <img src="/images/preset.png" alt="" @click="addAduNum" />
+        <img src="/images/preset.png" alt="" />
       </div>
       <div class="kids number">
         <span>Kids：</span
         ><input type="number" min="0" v-model="order.kidNum" />
-        <img src="/images/preset.png" alt="" @click="subKidNum" />
+        <img src="/images/preset.png" alt="" />
       </div>
       <div class="flex">
         <span>{{ order.aduNum }}</span
@@ -49,7 +49,7 @@
         <span>Total</span>
         <span>${{ Totals }}</span>
       </div>
-      <a href="/bookDetails">Book Now</a>
+      <a @click="jump('/bookDetails')">Book Now</a>
     </div>
   </div>
 </template>
@@ -82,16 +82,11 @@ export default {
       console.log(result);
       this.order.price = result.from;
     },
-    addAduNum() {
-      // this.aduNum = parseInt(this.aduNum) + 1;
-    },
-    subKidNum() {
-      // if (this.kidNum > 0) {
-      //   this.kidNum = parseInt(this.kidNum) - 1;
-      // }
-    },
     isShow() {
       this.show = false;
+    },
+    jump(val) {
+      this.$router.push(val);
     },
   },
   computed: {
@@ -243,6 +238,7 @@ export default {
       display: block;
       padding: 10px 75px;
       margin-top: 16px;
+      cursor: pointer;
     }
     p {
       font-size: 14px;

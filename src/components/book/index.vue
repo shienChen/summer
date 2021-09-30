@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content">
         <div class="commonTitle">
-          <a href="/view"><img src="../../assets/images/prve.png" alt="" /></a>
+          <!-- <a href="/view"><img src="../../assets/images/prve.png" alt="" /></a> -->
           <h3 class="v_title">Aranya Art Center</h3>
         </div>
         <div class="article" v-for="item in articalList" :key="item.id">

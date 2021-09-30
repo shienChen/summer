@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content">
         <div class="commonTitle">
-          <img src="../../assets/images/prve.png" alt="" />
+          <!-- <img src="../../assets/images/prve.png" alt="" /> -->
           <h3 class="v_title">Aranya Art Center</h3>
         </div>
         <div class="contentBox flex">

@@ -8,7 +8,7 @@
       </div>
       <div>
         <span class="left">Date</span>
-        <span class="right">Sep 13, 2021</span>
+        <span class="right">{{ date }}</span>
       </div>
       <div>
         <span class="left">Guest</span>
@@ -46,6 +46,7 @@ export default {
       "Totals",
       "Taxs",
       "Subtotal",
+      "date",
     ]),
   },
 };

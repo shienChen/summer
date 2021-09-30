@@ -1,7 +1,11 @@
 <template>
   <div class="content">
     <div class="commonTitle">
-      <img src="../../assets/images/prve.png" alt="" @click="jump('/home')" />
+      <img
+        src="../../assets/images/prve.png"
+        alt=""
+        @click="jumpHome('/home')"
+      />
       <h3 class="v_title">{{ locationName }}</h3>
     </div>
     <div class="item flex" v-for="item in list" :key="item.id">
@@ -66,6 +70,9 @@ export default {
           id: id,
         },
       });
+    },
+    jumpHome(val) {
+      this.$router.push(val);
     },
     async getViewList() {
       console.log("this.locationName=" + this.locationName);

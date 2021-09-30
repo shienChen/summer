@@ -26,12 +26,18 @@
         <span class="right">Chengyi North Street, Xia Men, AC 0592</span>
       </div>
     </div>
-    <a href="/home" class="bookDetailsBtn">Return to home page</a>
+    <a @click="jump('/home')" class="bookDetailsBtn">Return to home page</a>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    jump(val) {
+      this.$router.push(val);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
